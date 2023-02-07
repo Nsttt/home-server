@@ -1,0 +1,16 @@
+version: "2.1"
+services:
+  jackett:
+    image: lscr.io/linuxserver/jackett
+    container_name: jackett
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+      - AUTO_UPDATE=true #optional
+    volumes:
+      - /home/nsttt/jackett:/config
+      - /mnt/Alpha/Downloads/jackett:/downloads
+    ports:
+      - 9117:9117
+    restart: unless-stopped

@@ -1,0 +1,15 @@
+---
+version: "2.1"
+services:
+  lidarr:
+    image: lscr.io/linuxserver/lidarr
+    container_name: lidarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+    volumes:
+      - /home/nsttt/lidarr/config:/config
+    ports:
+      - 8686:8686
+    restart: unless-stopped

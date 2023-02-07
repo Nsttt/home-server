@@ -1,0 +1,17 @@
+version: "3.5"
+services:
+        jellyfin:
+                image: jellyfin/jellyfin
+                container_name: jellyfin
+                user: 1000:1000
+                group_add:
+                        - 109
+                network_mode: "host"
+                volumes:
+                        - /home/nsttt/jellyfin/config:/config
+                        - /home/nsttt/jellyfin/cache:/cache
+                        - /mnt/Alpha/Media:/media
+                devices:
+                        - /dev/dri/renderD128:/dev/dri/renderD128
+                        - /dev/dri/card0:/dev/dri/card0
+                restart: "unless-stopped"

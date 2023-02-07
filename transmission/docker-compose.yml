@@ -1,0 +1,19 @@
+version: "2.1"
+services:
+  transmission:
+    image: lscr.io/linuxserver/transmission
+    container_name: transmission
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+      - TRANSMISSION_WEB_HOME=/flood-for-transmission/ #optional
+    volumes:
+      - /home/nsttt/transmission/config:/config
+      - /mnt/Alpha/Downloads:/downloads
+      - /mnt/Alpha/Downloads/torrents:/watch
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped
